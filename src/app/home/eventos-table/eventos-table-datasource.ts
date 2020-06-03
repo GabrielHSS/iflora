@@ -3,49 +3,56 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-// TODO: Replace this with your own data model type
-export interface EventosTableItem {
-  name: string;
-  id: number;
+export interface Comments {
+  text: string,
+  posted_by: string,
+  like: number
 }
 
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: EventosTableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
-];
+export interface EventosTableItem {
+  title: string,
+  posted_by: string,
+  text: string,
+  thumb: string,
+  like: number,
+  denunciations: number,
+  denunciation_media: number,
+  events_date: string,
+  events_place: string,
+  events_time: string,
+  confirmed: number,
+  categories_list: [string],
+  comments: Comments[]
+}
 
 /**
  * Data source for the EventosTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class EventosTableDataSource extends DataSource<EventosTableItem> {
-  data: EventosTableItem[] = EXAMPLE_DATA;
+export class EventosTableDataSource extends DataSource<EventosTableItem>{
+
+  data: EventosTableItem[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     super();
+    this.getEventsTable();
+  }
+
+  getEventsTable() {
+    try {
+      this.http
+        .get<EventosTableItem[]>('https://5e7b6dc60e0463001633336d.mockapi.io/iflora/api/v1/events')
+        .subscribe((result) => {
+            this.data = result['events_list']
+        });
+    } catch(error) {
+      console.error(error);
+    }
   }
 
   /**
@@ -94,8 +101,17 @@ export class EventosTableDataSource extends DataSource<EventosTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'title': return compare(a.title, b.title, isAsc);
+        case 'posted_by': return compare(a.posted_by, b.posted_by, isAsc);
+        case 'text': return compare(a.text, b.text, isAsc);
+        case 'thumb': return compare(a.thumb, b.thumb, isAsc);
+        case 'like': return compare(+a.like, +b.like, isAsc);
+        case 'denunciations': return compare(+a.denunciations, +b.denunciations, isAsc);
+        case 'denunciation_media': return compare(+a.denunciation_media, +b.denunciation_media, isAsc);
+        case 'events_date': return compare(a.events_date, b.events_date, isAsc);
+        case 'events_place': return compare(a.events_place, b.events_place, isAsc);
+        case 'events_time': return compare(a.events_time, b.events_time, isAsc);
+        case 'confirmed': return compare(+a.confirmed, +b.confirmed, isAsc);
         default: return 0;
       }
     });

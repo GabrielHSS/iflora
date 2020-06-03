@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { EventosTableDataSource, EventosTableItem } from './eventos-table-datasource';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-eventos-table',
   templateUrl: './eventos-table.component.html',
@@ -16,10 +18,29 @@ export class EventosTableComponent implements AfterViewInit, OnInit {
   dataSource: EventosTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = [
+    "thumb",
+    "title",
+    "posted_by",
+    "text",
+    "like",
+    "denunciations",
+    "denunciation_media",
+    "events_date",
+    "events_place",
+    "events_time",
+    "confirmed",
+    "categories_list"
+  ];
+
+
+  constructor(
+    private http: HttpClient,
+  ) {
+  }
 
   ngOnInit() {
-    this.dataSource = new EventosTableDataSource();
+    this.dataSource = new EventosTableDataSource(this.http);
   }
 
   ngAfterViewInit() {
