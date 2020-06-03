@@ -6,6 +6,12 @@ mat-list-item{
 mat-list-item mat-icon{
   margin-right: 8px;
 }
+.active-link{
+  background-color: rgba(0, 0, 0, 0.251);
+}
+.active-link:hover{
+  background-color: rgba(0, 0, 0, 0.251);
+}
 #userInfo{
   margin-top: 16px;
   margin-bottom: 16px;

@@ -4,7 +4,7 @@
     class="sidenav"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [mode]="(isHandset$ | async) ? 'push' : 'push'"
     [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar>
@@ -16,21 +16,21 @@
       <p class="titleText">usuário@aleatorio.com</p>
     </div>
     <mat-nav-list>
-      <mat-list-item>
+      <mat-list-item routerLink="eventos" routerLinkActive="active-link" (click)="drawer.close()">
         <mat-icon>home</mat-icon>
-        <a routerLink="/home/perfil">Perfil</a>
+        <a>Eventos</a>
       </mat-list-item>
-      <mat-list-item>
+      <mat-list-item  routerLink="perfil" routerLinkActive="active-link" (click)="drawer.close()">
+        <mat-icon>home</mat-icon>
+        <a>Perfil</a>
+      </mat-list-item>
+      <mat-list-item routerLink="ajuda" routerLinkActive="active-link" (click)="drawer.close()">
         <mat-icon>help</mat-icon>
-        <a routerLink="/home/ajuda">Ajuda</a>
+        <a>Ajuda</a>
       </mat-list-item>
-      <mat-list-item>
+      <mat-list-item  routerLink="sobre" routerLinkActive="active-link" (click)="drawer.close()">
         <mat-icon>info</mat-icon>
-        <a routerLink="/home/sobre">Sobre</a>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>home</mat-icon>
-        <a routerLink="/home/eventos">Eventos</a>
+        <a>Sobre</a>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
@@ -41,11 +41,10 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <h1 class="titleText">Eventos</h1>
+      <h1 class="titleText">IFLORA</h1>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
