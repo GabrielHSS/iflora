@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HomeComponent } from './home/home.component';
 import { MainNavComponent } from './home/main-nav/main-nav.component';
@@ -22,6 +22,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AjudaComponent } from './ajuda/ajuda.component';
 import { SobreComponent } from './sobre/sobre.component';
+import { AuthComponent } from './auth/auth.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,8 @@ import { SobreComponent } from './sobre/sobre.component';
     EventosTableComponent,
     PerfilComponent,
     AjudaComponent,
-    SobreComponent
+    SobreComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,12 @@ import { SobreComponent } from './sobre/sobre.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

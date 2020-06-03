@@ -1,12 +1,12 @@
 <mat-toolbar>
   <img routerLink="home" src="../../assets/logo.svg" width="64px" alt="" />
-  <ul class="menu titleText">
-    <li><a href="">Home</a></li>
-    <li><a href="">Login</a></li>
-    <li><a href="">Register</a></li>
-  </ul>
 </mat-toolbar>
-<div id="wrapper">
-  <h2 class="titleText">Sistema de cadastro e publicação de eventos</h2>
-  <button routerLink="/home" class="titleText">Entrar</button>
-</div>
+<section>
+  <div id="wrapper">
+    <p class="title">Sistema de cadastro e publicação de eventos</p>
+    <button routerLink="/auth" mat-raised-button>Entrar</button>
+  </div>
+</section>
+<section>
+  <router-outlet></router-outlet>
+</section>
