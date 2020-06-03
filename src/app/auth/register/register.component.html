@@ -1,23 +1,29 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
-    <mat-card-header> 
+    <mat-card-header>
       <img mat-card-image src="../../../assets/logo.svg" alt="" srcset="">
     </mat-card-header>
     <mat-card-content>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Nome" formControlName="name">
+            <input matInput placeholder="Nome" formControlName="name" maxlength="60">
             <mat-error *ngIf="addressForm.controls['name'].hasError('required')">
               Nome é <strong>necessário</strong>!
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['name'].hasError('maxlength')">
+              Tamanho maximo ultrapassado
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col" *ngIf="!mobile">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Sobrenome" formControlName="last_name">
+            <input matInput placeholder="Sobrenome" formControlName="last_name" maxlength="60">
             <mat-error *ngIf="addressForm.controls['last_name'].hasError('required')">
               Sobrenome é <strong>necessário</strong>!
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['last_name'].hasError('maxlength')">
+              Tamanho maximo ultrapassado
             </mat-error>
           </mat-form-field>
         </div>
@@ -25,19 +31,12 @@
       <div class="row" *ngIf="mobile">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Sobrenome" formControlName="last_name">
+            <input matInput placeholder="Sobrenome" formControlName="last_name" maxlength="60">
             <mat-error *ngIf="addressForm.controls['last_name'].hasError('required')">
               Sobrenome é <strong>necessário</strong>!
             </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Nome de usuário" formControlName="nickname">
-            <mat-error *ngIf="addressForm.controls['nickname'].hasError('required')">
-              Nome de usuário é <strong>necessário</strong>!
+            <mat-error *ngIf="addressForm.controls['last_name'].hasError('maxlength')">
+              Tamanho maximo ultrapassado
             </mat-error>
           </mat-form-field>
         </div>
@@ -45,9 +44,28 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Email" formControlName="email">
+            <input matInput placeholder="Nome de usuário" formControlName="nickname" maxlength="60">
+            <mat-error *ngIf="addressForm.controls['nickname'].hasError('required')">
+              Nome de usuário é <strong>necessário</strong>!
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['nickname'].hasError('maxlength')">
+              Tamanho maximo ultrapassado
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" formControlName="email" maxlength="60">
             <mat-error *ngIf="addressForm.controls['email'].hasError('required')">
               Email é <strong>necessário</strong>!
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['email'].hasError('maxlength')">
+              Tamanho maximo ultrapassado
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['email'].hasError('pattern')">
+              Email inválido
             </mat-error>
           </mat-form-field>
         </div>
@@ -62,13 +80,13 @@
           </mat-form-field>
         </div>
       </div>
-      
+
 
     </mat-card-content>
     <mat-card-actions>
       <a routerLink="../login">Já possuo conta</a>
       <button mat-raised-button color="primary" type="submit">Registrar</button>
     </mat-card-actions>
-    
+
   </mat-card>
 </form>
