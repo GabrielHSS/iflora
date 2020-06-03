@@ -3,6 +3,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { EventosTableComponent } from './eventos-table.component';
 
@@ -14,6 +15,7 @@ describe('EventosTableComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ EventosTableComponent ],
       imports: [
+        MatChipsModule,
         NoopAnimationsModule,
         MatPaginatorModule,
         MatSortModule,
