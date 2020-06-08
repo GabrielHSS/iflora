@@ -9,6 +9,7 @@ import { AjudaComponent } from './ajuda/ajuda.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { EventosTableComponent } from './home/eventos-table/eventos-table.component';
 import { AuthComponent } from './auth/auth.component';
+import { ListaEventosComponent } from './home/lista-eventos/lista-eventos.component';
 
 const routes: Routes = [
   {
@@ -29,8 +30,14 @@ const routes: Routes = [
       },
       {
         path: 'eventos',
-        component: EventosTableComponent,
+        component: ListaEventosComponent,
       },
+      {
+        path: '',
+        redirectTo: 'eventos',
+        pathMatch: 'full',
+      },
+      
     ],
   },
   {

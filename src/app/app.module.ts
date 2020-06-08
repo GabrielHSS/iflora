@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListaEventosComponent } from './home/lista-eventos/lista-eventos.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PerfilComponent,
     AjudaComponent,
     SobreComponent,
-    AuthComponent
+    AuthComponent,
+    ListaEventosComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+    MatExpansionModule,
     MatSortModule,
     MatInputModule,
     MatSelectModule,
@@ -69,9 +73,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     ReactiveFormsModule,
     MatChipsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

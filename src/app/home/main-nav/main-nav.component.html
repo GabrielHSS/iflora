@@ -16,19 +16,19 @@
       <p class="titleText">usuário@aleatorio.com</p>
     </div>
     <mat-nav-list>
-      <mat-list-item routerLink="eventos" routerLinkActive="active-link" (click)="drawer.close()">
+      <mat-list-item routerLink="eventos" routerLinkActive="active-link" (click)="buttonChangeRoute()">
         <mat-icon>home</mat-icon>
         <a>Eventos</a>
       </mat-list-item>
-      <mat-list-item  routerLink="perfil" routerLinkActive="active-link" (click)="drawer.close()">
+      <mat-list-item  routerLink="perfil" routerLinkActive="active-link" (click)="buttonChangeRoute()">
         <mat-icon>home</mat-icon>
         <a>Perfil</a>
       </mat-list-item>
-      <mat-list-item routerLink="ajuda" routerLinkActive="active-link" (click)="drawer.close()">
+      <mat-list-item routerLink="ajuda" routerLinkActive="active-link" (click)="buttonChangeRoute()">
         <mat-icon>help</mat-icon>
         <a>Ajuda</a>
       </mat-list-item>
-      <mat-list-item  routerLink="sobre" routerLinkActive="active-link" (click)="drawer.close()">
+      <mat-list-item  routerLink="sobre" routerLinkActive="active-link" (click)="buttonChangeRoute()">
         <mat-icon>info</mat-icon>
         <a>Sobre</a>
       </mat-list-item>
@@ -44,7 +44,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <h1 class="titleText">IFLORA</h1>
+      <h1 class="titleText">{{routeName}}</h1>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

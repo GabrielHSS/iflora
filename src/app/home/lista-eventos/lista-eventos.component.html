@@ -1,0 +1,61 @@
+<!--
+<li *ngFor="let evento of data; index as i; first as isFirst">
+    {{i}}<br>
+    <img src="{{evento.thumb}}" width="64px" height="64px" alt="" srcset=""><br>
+    {{evento.title}}<br>  
+    {{evento.posted_by}}<br> 
+    {{evento.text}}<br>  
+    {{evento.like}}<br> 
+    {{evento.denunciations}}<br>
+    {{evento.denunciation_media}}<br>
+    {{evento.events_date}}<br>
+    {{evento.events_place}}<br>
+    {{evento.events_time}}<br>
+    {{evento.confirmed}}<br>          
+  </li><br>
+  -->
+<div id="wrapper"> 
+  <mat-accordion>
+    <mat-expansion-panel class="" *ngFor="let evento of data; index as i">
+      <mat-expansion-panel-header>
+        <img src="{{ evento.thumb }}" alt="" srcset="" />
+        <div id="info">
+          <p class="title">{{ evento.title }}</p>
+          <p class="postedBy">Postado por: {{ evento.posted_by }}</p>
+        </div>
+        <span class="dividerFlex"></span>
+        <div id="aval">
+          <span>
+            <mat-icon>thumb_up</mat-icon>
+            <p>{{ evento.like }}</p>
+          </span>
+
+          <span>
+            <mat-icon>thumb_down</mat-icon>
+            <p>{{ evento.denunciations }}</p>
+          </span>
+        </div>
+      </mat-expansion-panel-header>
+
+      {{ evento.text }}<br />
+      <div *ngFor="let comment of evento.comments">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"><img src="../../../assets/banner.jpg" alt="" srcset=""></div>
+            <mat-card-title>{{comment.posted_by}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{comment.text}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <p>{{comment.like}}</p>
+            <button mat-icon-button>
+              <mat-icon>thumb_up</mat-icon>
+            </button>
+            
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
